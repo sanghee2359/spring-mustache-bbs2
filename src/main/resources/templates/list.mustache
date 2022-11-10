@@ -10,9 +10,9 @@
     <tbody class="table-group-divider">
     {{#articles}}
         <tr>
-            <th>{{id}}</th>
-            <th><a href="/articles/{{id}}">{{title}}</a></th>
-            <th>{{content}}</th>
+            <th scope="row">{{id}}</th>
+            <td><a href="/articles/{{id}}">{{title}}</a></td>
+            <td>{{content}}</td>
         </tr>
     {{/articles}}
     </tbody>
