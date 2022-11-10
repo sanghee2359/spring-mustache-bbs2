@@ -57,18 +57,21 @@ public class ArticleController {
     }
     @GetMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id, Model model){
+        log.info("id:{}",id);
         Optional<Article> optArticle = articleReapository.findById(id);
         if(!optArticle.isEmpty()){
             model.addAttribute("article", optArticle.get());
             return "edit";
-        }else return "error";
+        }else {
+            return "error";
+        }
     }
     @PostMapping("/{id}/update")
-    public String update(@PathVariable Long id, Model model, ArticleDto articleDto){
-        Article article = articleReapository.save(articleDto.toEntity());
-        model.addAttribute("article", article);
+    public String update( Model model, ArticleDto articleDto){
+        Article savedArticle = articleReapository.save(articleDto.toEntity());
+        model.addAttribute("article", savedArticle);
         log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent());
-        return String.format("redirect:/arcitlces/%d",article.getId());
+        return String.format("redirect:/arcitlces/%d",savedArticle.getId());
     }
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id){
