@@ -49,4 +49,8 @@ public class ArticleController {
         model.addAttribute("articles",articles);
         return "list";
     }
+    @GetMapping(value="")
+    public String index(){
+        return "redirect:/articles/list";
+    }
 }
