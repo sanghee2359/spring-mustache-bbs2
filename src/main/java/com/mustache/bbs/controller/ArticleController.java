@@ -71,7 +71,7 @@ public class ArticleController {
         Article savedArticle = articleReapository.save(articleDto.toEntity());
         model.addAttribute("article", savedArticle);
         log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent());
-        return String.format("redirect:/arcitlces/%d",savedArticle.getId());
+        return String.format("redirect:/articles/%d",savedArticle.getId());
     }
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id){
