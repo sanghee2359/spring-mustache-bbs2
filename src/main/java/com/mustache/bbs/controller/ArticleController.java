@@ -42,5 +42,11 @@ public class ArticleController {
             return "show";
         }else return "error";
     }
-
+    @GetMapping(value = "/list")
+    public String list(Model model){
+        PageRequest pageRequest = PageRequest.of(0, 100);
+        Page<Article> articles = articleReapository.findAll(pageRequest);
+        model.addAttribute("articles",articles);
+        return "list";
+    }
 }
