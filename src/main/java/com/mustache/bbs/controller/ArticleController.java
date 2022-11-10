@@ -70,5 +70,9 @@ public class ArticleController {
         log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent());
         return String.format("redirect:/arcitlces/%d",article.getId());
     }
-
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id){
+        articleReapository.deleteById(id);
+        return "redirect:/articles";
+    }
 }
