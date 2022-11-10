@@ -70,7 +70,7 @@ public class ArticleController {
     public String update( Model model, ArticleDto articleDto){
         Article savedArticle = articleReapository.save(articleDto.toEntity());
         model.addAttribute("article", savedArticle);
-        log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent());
+        log.info("id:{} title:{} content:{}",articleDto.getId(), articleDto.getTitle(), articleDto.getContent());
         return String.format("redirect:/articles/%d",savedArticle.getId());
     }
     @GetMapping("/{id}/delete")
