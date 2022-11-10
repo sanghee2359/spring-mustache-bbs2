@@ -3,6 +3,7 @@ package com.mustache.bbs.controller;
 import com.mustache.bbs.domain.dto.ArticleDto;
 import com.mustache.bbs.domain.entity.Article;
 import com.mustache.bbs.repository.ArticleReapository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/articles")
+@Slf4j
 public class ArticleController {
     private final ArticleReapository articleReapository;
 
@@ -53,4 +55,20 @@ public class ArticleController {
     public String index(){
         return "redirect:/articles/list";
     }
+    @GetMapping(value = "/{id}/edit")
+    public String edit(@PathVariable Long id, Model model){
+        Optional<Article> optArticle = articleReapository.findById(id);
+        if(!optArticle.isEmpty()){
+            model.addAttribute("article", optArticle.get());
+            return "edit";
+        }else return "error";
+    }
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable Long id, Model model, ArticleDto articleDto){
+        Article article = articleReapository.save(articleDto.toEntity());
+        model.addAttribute("article", article);
+        log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent());
+        return String.format("redirect:/arcitlces/%d",article.getId());
+    }
+
 }
