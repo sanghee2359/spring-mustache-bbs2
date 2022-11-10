@@ -3,7 +3,7 @@
 <form class="container" action="/articles/{{article.id}}/update" method="post">
     <input type="hidden" name="id" value="{{article.id}}"/>
     <input type="text" name="title" value="{{article.title}}" />
-    <textarea class="form-control" rows="3" name="content" value="content">{{article.content}}</textarea>
+    <textarea class="form-control" rows="3" name="content" >{{article.content}}</textarea>
     <button type="submit" class="btn btn-primary mb-3">Edit</button>
 </form>
 <a href="/articles/list" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List</a>
