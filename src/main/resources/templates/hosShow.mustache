@@ -1,0 +1,15 @@
+{{>layouts/header}}
+    <div class="card" style="width: 18rem;">
+        {{#hospitals}}
+            <div class="card-body">
+                <h5 class="card-title">{{hospitalName}}</h5>
+                <p class="card-text">{{roadNameAddress}}</p>
+            </div>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <a href="/hospitals/" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">HospitalList</a>
+
+    </div>
+        {{/hospitals}}
+
+{{>layouts/footer}}
