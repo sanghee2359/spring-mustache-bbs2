@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class HospitalDto {
-    private int id;
-    private String hospital_name;
-    private String full_address;
+    private Integer id;
+    private String hospitalName;
+    private String roadNameAddress;
     public Hospital toEntity () {
-        return new Hospital(this.id, this.hospital_name ,this.full_address);
+        return new Hospital(this.id, this.hospitalName ,this.roadNameAddress);
     }
 }
