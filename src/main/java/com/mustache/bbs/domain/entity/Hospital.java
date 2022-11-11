@@ -21,5 +21,7 @@ public class Hospital {
     @Column(name="road_name_address")
     private String roadNameAddress;
 
+    @Column(name="business_type_name")
+    private String bussinessType;
 
 }

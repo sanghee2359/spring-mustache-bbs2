@@ -1,15 +1,18 @@
 {{>layouts/header}}
-    <div class="card" style="width: 18rem;">
-        {{#hospitals}}
-            <div class="card-body">
-                <h5 class="card-title">{{hospitalName}}</h5>
-                <p class="card-text">{{roadNameAddress}}</p>
-            </div>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-        <a href="/hospitals/" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">HospitalList</a>
 
+<div class="card" style="height: 20rem; width: 30rem;">
+    <div class="card-body">
+        <h3 class="card-title">{{hospital.hospitalName}}</h3>
+        <h5 class="card-subtitle mb-2 text-muted">{{hospital.bussinessType}}</h5>
+        <p class="card-text">
+            <img src="https://user-images.githubusercontent.com/73879325/201293802-e872943a-c0ae-4ded-8f72-585f99f85529.png"
+                 height="25"width="20"/> {{hospital.roadNameAddress}}</p>
+        <br><br>
+        <h5>병원 정보</h5>
     </div>
-        {{/hospitals}}
+</div>
+<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <a href="/hospitals/" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List</a>
+</div>
 
 {{>layouts/footer}}
