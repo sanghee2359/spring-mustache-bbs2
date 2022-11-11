@@ -10,7 +10,7 @@
     <tbody class="table-group-divider">
     {{#articles}}
         <tr>
-            <th scope="row">{{id}}</th>
+            <th>{{id}}</th>
             <th><a href="/articles/{{id}}">{{title}}</a></th>
             <th>{{content}}</th>
         </tr>
@@ -18,5 +18,4 @@
     </tbody>
 </table>
 <a href="/articles/new" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Add</a>
-
 {{>layouts/footer}}

@@ -6,13 +6,13 @@
                 <h6 class="card-subtitle mb-2 text-muted">Id : {{id}}</h6>
                 <p class="card-text">{{content}}</p>
             </div>
-        {{/article}}
     </div>
-<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <a href="/articles/new" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Add</a>
-    <a href="/articles/" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List</a>
-    <a href="/articles/{{id}}/edit" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Edit</a>
-    <a href="/articles/{{id}}/delete" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Delete</a>
-</div>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <a href="/articles/new" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Add</a>
+        <a href="/articles/" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">List</a>
+        <a href="/articles/{{id}}/edit" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Edit</a>
+        <a href="/articles/{{id}}/delete" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Delete</a>
+    </div>
+        {{/article}}
 
 {{>layouts/footer}}
