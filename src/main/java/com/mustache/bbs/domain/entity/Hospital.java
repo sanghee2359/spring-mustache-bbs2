@@ -17,12 +17,9 @@ public class Hospital {
     private Integer id; // big int
     @Column(name="hospital_name") // 기본 값 말고 다른 형태로 되어있는 경우 Column 사용
     private String hospitalName;
-    
-    
+
+    @Column(name="road_name_address")
     private String roadNameAddress;
-    public Hospital(String hospital_name, String full_address) {
-        this.hospitalName = hospitalName;
-        this.roadNameAddress = roadNameAddress;
-    }
+
 
 }
