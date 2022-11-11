@@ -1,0 +1,21 @@
+{{>layouts/header}}
+<table class = "table table-stripted">
+    <thread>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">HospitalName</th>
+            <th scope="col">RoadNameaddress</th>
+        </tr>
+    </thread>
+    <tbody class="table-group-divider">
+    {{#hospitals}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <th><a href="/hospitals/{{id}}">{{hospitalName}}</a></th>
+            <th>{{roadNameaddress}}</th>
+        </tr>
+    {{/hospitals}}
+    </tbody>
+</table>
+
+{{>layouts/footer}}
