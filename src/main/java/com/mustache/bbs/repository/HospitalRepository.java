@@ -7,6 +7,14 @@ import java.util.List;
 
 
 public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
-    List<Hospital> findByBussinessTypeNameIn(List<String> businessTypes);
+    List<Hospital> findByBusinessTypeNameIn(List<String> businessTypes);
 
+    List<Hospital> findByRoadNameAddressContaining(String keyword); // 포함
+
+    List<Hospital> findByHospitalNameStartingWith(String keyword); // 시작
+
+    List<Hospital> findByHospitalNameEndingWith(String keyword); // 끝남
+    List<Hospital> findByTotalNumberOfBedsBetween(int start,int end);
+
+    List<Hospital> findByPatientRoomCountBetweenOrderByPatientRoomCountDesc(int a, int b);
 }
