@@ -24,14 +24,6 @@ public class HospitalController {
     public HospitalController(HospitalRepository hospitalRepository) {
         this.hospitalRepository = hospitalRepository;
     }
-
-//    @GetMapping("")
-//    public String list(Model model){
-//        PageRequest pageRequest = PageRequest.of(0, 100);
-//        Page<Hospital> hospitals = hospitalRepository.findAll(pageRequest);
-//        model.addAttribute("hospitals",hospitals);
-//        return "hospitals/hoslist";
-//    }
     @GetMapping("")
     public String list(Model model, Pageable pageable) {
         Page<Hospital> hospitals = hospitalRepository.findAll(pageable);
