@@ -22,5 +22,7 @@ public class Hospital {
     private String roadNameAddress;
 
     private String bussinessTypeName;
+    private Integer totalNumberOfBeds;
+    private Float totalAreaSize;
 
 }
