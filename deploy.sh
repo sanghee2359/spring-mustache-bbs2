@@ -29,4 +29,4 @@ docker build -t ${image_name} .
 
 # Run container connected to existing docker container
 echo "=> Run container..."
-docker run -p ${host_port}:${virtual_port} -e SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL} -e SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD} ${image_name}
+docker run -p ${host_port}:${virtual_port} -e SPRING_DATASOURCE_URL=jdbc:mysql://${SPRING_DATASOURCE_URL} -e SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD} ${image_name}
