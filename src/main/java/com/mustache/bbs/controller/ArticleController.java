@@ -2,7 +2,7 @@ package com.mustache.bbs.controller;
 
 import com.mustache.bbs.domain.dto.ArticleDto;
 import com.mustache.bbs.domain.entity.Article;
-import com.mustache.bbs.repository.ArticleReapository;
+import com.mustache.bbs.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,10 +19,10 @@ import java.util.Optional;
 @RequestMapping(value = "/articles")
 @Slf4j
 public class ArticleController {
-    private final ArticleReapository articleReapository;
+    private final ArticleRepository articleRepository;
 
-    public ArticleController(ArticleReapository articleReapository) {
-        this.articleReapository = articleReapository;
+    public ArticleController(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
     }
 
     @GetMapping(value = "/new")
@@ -33,12 +33,12 @@ public class ArticleController {
     public String createArticle(ArticleDto articleDto){
         Article article = articleDto.toEntity();
 
-        Article saved = articleReapository.save(article);
+        Article saved = articleRepository.save(article);
         return String.format("redirect:/articles/%d",saved.getId());
     }
     @GetMapping(value="/{id}")
     public String getArticle(@PathVariable Long id, Model model){
-        Optional<Article> optArticle = articleReapository.findById(id);
+        Optional<Article> optArticle = articleRepository.findById(id);
         if(!optArticle.isEmpty()){
             model.addAttribute("article",optArticle.get());
             return "show";
@@ -47,7 +47,7 @@ public class ArticleController {
     @GetMapping(value = "/list")
     public String list(Model model){
         PageRequest pageRequest = PageRequest.of(0, 100);
-        Page<Article> articles = articleReapository.findAll(pageRequest);
+        Page<Article> articles = articleRepository.findAll(pageRequest);
         model.addAttribute("articles",articles);
         return "list";
     }
@@ -58,7 +58,7 @@ public class ArticleController {
     @GetMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id, Model model){
         log.info("id:{}",id);
-        Optional<Article> optArticle = articleReapository.findById(id);
+        Optional<Article> optArticle = articleRepository.findById(id);
         if(!optArticle.isEmpty()){
             model.addAttribute("article", optArticle.get());
             return "edit";
@@ -68,14 +68,14 @@ public class ArticleController {
     }
     @PostMapping("/{id}/update")
     public String update( Model model, ArticleDto articleDto){
-        Article savedArticle = articleReapository.save(articleDto.toEntity());
+        Article savedArticle = articleRepository.save(articleDto.toEntity());
         model.addAttribute("article", savedArticle);
         log.info("id:{} title:{} content:{}",articleDto.getId(), articleDto.getTitle(), articleDto.getContent());
         return String.format("redirect:/articles/%d",savedArticle.getId());
     }
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id){
-        articleReapository.deleteById(id);
+        articleRepository.deleteById(id);
         return "redirect:/articles";
     }
 }
