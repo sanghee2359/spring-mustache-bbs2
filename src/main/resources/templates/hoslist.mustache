@@ -1,4 +1,8 @@
 {{>layouts/header}}
+<form action="/hospitals" method="get">
+    <input type="text" name="keyword">
+    <input type="submit">
+</form>
 <table class = "table table-stripted">
     <thread>
         <tr>
@@ -17,8 +21,15 @@
     {{/hospitals}}
     </tbody>
 </table>
-<ul class="pagination justify-content-center">
-    <a class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
-    <a class="page-item"><a class="page-link" href="?page={{next}}"/>Next</a></li>
+
+<ul class="pagination justify-Content-center">
+    {{#keyword}}
+        <a class="page-item"><a class="page-link" href="?keyword={{keyword}}&page={{previous}}">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="?keyword={{keyword}}&page={{next}}">Next</a></li>
+    {{/keyword}}
+    {{^keyword}}
+        <a class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+    {{/keyword}}
 </ul>
 {{>layouts/footer}}
