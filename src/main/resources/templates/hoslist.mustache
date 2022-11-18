@@ -1,7 +1,12 @@
 {{>layouts/header}}
 <form action="/hospitals" method="get">
-    <input type="text" name="keyword">
-    <input type="submit">
+    {{#keyword}}
+        <input type="text" name="keyword" value="{{keyword}}">
+    {{/keyword}}
+    {{^keyword}}
+        <input type="text" name="keyword">
+    {{/keyword}}
+        <input type="submit">
 </form>
 <table class = "table table-stripted">
     <thread>
